@@ -118,7 +118,7 @@
       let urls = text.match(urlRegex);
       
       if (urls && urls.length > 0) {
-        let apiUrl = 'https://res.abeim.cn/api-dwz_longurl?url==' + encodeURIComponent(urls[0]);
+        let apiUrl = 'https://res.abeim.cn/api-dwz_longurl?url=' + encodeURIComponent(urls[0]);
         
         fetch(apiUrl)
           .then(response => response.json())
