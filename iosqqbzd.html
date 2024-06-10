@@ -118,13 +118,13 @@
       let urls = text.match(urlRegex);
       
       if (urls && urls.length > 0) {
-        let apiUrl = 'https://api.pearktrue.cn/api/short/hy.php?url=' + encodeURIComponent(urls[0]);
+        let apiUrl = 'https://res.abeim.cn/api-dwz_longurl?url==' + encodeURIComponent(urls[0]);
         
         fetch(apiUrl)
           .then(response => response.json())
           .then(data => {
             if (data.code === 200) {
-              let songmid = data.data.destination.match(/songmid=([0-9a-zA-Z]+)/)[1];
+              let songmid = data.long_url.match(/songmid=([0-9a-zA-Z]+)/)[1];
               generateFinalUrl(songmid);
             } else {
               alert("无法获取songmid参数，请检查API返回数据");
