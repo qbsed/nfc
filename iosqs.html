@@ -88,14 +88,14 @@
       let urls = text.match(urlRegex);
 
       if (urls && urls.length > 0) {
-        let apiUrl = 'https://api.pearktrue.cn/api/short/hy.php?url=' + encodeURIComponent(urls[0]);
+        let apiUrl = 'https://res.abeim.cn/api-dwz_longurl?url=' + encodeURIComponent(urls[0]);
 
         try {
           let response = await fetch(apiUrl);
           let data = await response.json();
 
           if (data.code === 200) {
-            let trackId = data.data.destination.match(/track_id=(\d+)/)[1];
+            let trackId = data.long_url.match(/track_id=(\d+)/)[1];
             generateFinalfinalLunaUrl(trackId);
           } else {
             alert("无法获取汽水音乐ID，请检查API返回数据");
