@@ -116,7 +116,7 @@
         // Call API to parse URL
         var response = await fetch(`https://res.abeim.cn/api-dwz_longurl?url=${encodeURIComponent(url)}`);
         var data = await response.json();
-        if (data.code === 200 && data.data && data.data.destination) {
+        if (data.code === 200 && data.long_url) {
           var destinationUrl = data.long_url;
           var urlParams = new URL(destinationUrl);
           var hash = urlParams.searchParams.get('hash');
