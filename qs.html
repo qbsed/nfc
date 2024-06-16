@@ -126,13 +126,13 @@
         let match = text.match(regex);
         if (match && match.length > 0) {
           let url = match[0];
-          let apiUrl = `https://res.abeim.cn/api-dwz_longurl?url=${encodeURIComponent(
+          let apiUrl = `https://api.pearktrue.cn/api/short/hy.php?url=${encodeURIComponent(
             url
           )}`;
           try {
             let response = await fetch(apiUrl);
             let data = await response.json();
-            let trackId = data.long_url.match(/track_id=(\d+)/)[1];
+            let trackId = data.data.destination.match(/track_id=(\d+)/)[1];
             let finalUrl = `luna://luna.com/playing?track_id=${trackId}`;
             document.getElementById("stepB").value = finalUrl;
             document.getElementById("stepB").select();

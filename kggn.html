@@ -114,10 +114,10 @@
       if (match) {
         var url = match[1];
         // Call API to parse URL
-        var response = await fetch(`https://res.abeim.cn/api-dwz_longurl?url=${encodeURIComponent(url)}`);
+        var response = await fetch(`https://api.pearktrue.cn/api/short/hy.php?url=${encodeURIComponent(url)}`);
         var data = await response.json();
-        if (data.code === 200 && data.long_url) {
-          var destinationUrl = data.long_url;
+        if (data.code === 200 && data.data && data.data.destination) {
+          var destinationUrl = data.data.destination;
           var urlParams = new URL(destinationUrl);
           var hash = urlParams.searchParams.get('hash');
           var albumId = urlParams.searchParams.get('album_id');

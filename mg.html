@@ -120,18 +120,19 @@
     </div>
 
     <script>
-
       async function processUrl() {
         let text = document.getElementById("stepA").value;
-        let regex = /https?:\/\/[^\s?]+/g;
+        let regex = /https?:\/\/[^\s]+/g;
         let match = text.match(regex);
         if (match && match.length > 0) {
           let url = match[0];
-          let apiUrl = `https://res.abeim.cn/api-dwz_longurl?url=${url}`;
+          let apiUrl = `https://api.pearktrue.cn/api/short/hy.php?url=${encodeURIComponent(
+            url
+          )}`;
           try {
             let response = await fetch(apiUrl);
             let data = await response.json();
-            let musicId = data.long_url.match(/id=(\d+)/)[1];
+            let musicId = data.data.destination.match(/id=(\d+)/)[1];
             let finalMiGuUrl = 'mgmusic://play?type=song&id=' + musicId;
             document.getElementById("stepB").value = finalMiGuUrl;
             document.getElementById("stepB").select();
@@ -143,6 +144,7 @@
           }
         }
       }
+
       // 清除按钮：清空所有输入框的内容
       function clearInputs() {
         document.getElementById("stepA").value = "";
