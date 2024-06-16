@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -82,36 +83,31 @@
   </div>
 
   <script>
-    async function processText() {
-      let text = document.getElementById("input").value;
-      let regex = /https?:\/\/[^\s?]+/g;
-      let urls = text.match(regex);
-      
-      if (urls && urls.length > 0) {
-        let apiUrl = 'https://res.abeim.cn/api-dwz_longurl?url=' + encodeURIComponent(urls[0]);
-        
-        try {
-          let response = await fetch(apiUrl);
-          if (response.ok) {
-            let data = await response.json();
-            
-            if (data.code === 200) {
-              let musicId = data.long_url.match(/id=(\d+)/)[1];
-              generateFinalMiGuUrl(musicId);
-            } else {
-              alert("无法获取咪咕音乐ID，请检查API返回数据");
-            }
-          } else {
-            alert("请求API失败：" + response.status);
-          }
-        } catch (error) {
-          alert("请求API失败：" + error);
-        }
-      } else {
-        alert("未找到有效的网址，请重新输入");
-      }
-    }
-     
+     async function processText() {
+       let text = document.getElementById("input").value;
+       let urlRegex = /(https?:\/\/[^\s]+)/g;
+       let urls = text.match(urlRegex);
+       
+       if (urls && urls.length > 0) {
+         let apiUrl = 'https://api.pearktrue.cn/api/short/hy.php?url=' + encodeURIComponent(urls[0]);
+         
+         try {
+           let response = await fetch(apiUrl);
+           let data = await response.json();
+           
+           if (data.code === 200) {
+             let musicId = data.data.destination.match(/id=(\d+)/)[1];
+             generateFinalMiGuUrl(musicId);
+           } else {
+             alert("无法获取咪咕音乐ID，请检查API返回数据");
+           }
+         } catch (error) {
+           alert("请求API失败：" + error);
+         }
+       } else {
+         alert("未找到有效的网址，请重新输入");
+       }
+     }
      
      function generateFinalMiGuUrl(musicId) {
        let finalMiGuUrl = 'mgmusic://play?type=song&id=' + musicId;
