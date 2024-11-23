@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航页</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #eaeced;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            color: #333;
+        }
+        #all {
+            text-align: center;
+            z-index: 1;
+            max-width: 600px;
+            width: 90%;
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #34495e;
+            margin: 10px 0;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+        .content {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 20px;
+            transition: transform 0.3s;
+        }
+        .content:hover {
+            transform: translateY(-5px);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 15px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #349f1d;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            color: #777;
+            font-size: 0.9em;
+        }
+        .bg-bubbles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .bg-bubbles li {
+            position: absolute;
+            list-style: none;
+            background: rgba(255, 255, 255, 0.6);
+            opacity: 0.5;
+            border-radius: 50%;
+            animation: bubble 20s infinite;
+        }
+        @keyframes bubble {
+            0% {
+                transform: translateY(0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+        
+        .link-box {
+            font-size: 24px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 80%;
+            margin: 0 auto; 
+        }
+    </style>
+</head>
+<body>
+<div id="all">
+    <div class="wrapper">
+        <div class="main">
+            <h1>呢佛吃音乐墙</h1>
+            <div class="content">
+                <div class="content-top">
+                    <h2>*本页仅用于学习浏览和作业测试</h2>
+                    <h5>*方便的哥哥姐姐们帮忙点点广告位</h2>
+                    <ul>
+						
+                        <li><h2 class="link-box"><a href="http://t.cn/A6nI2OsL" target="_blank">音乐会员充值</a></h2></li>
+                        <li><h2 class="link-box"><a href="http://呢佛吃.icu" target="_blank">首选-通道①</a></h2></li>
+                        <li><h2 class="link-box"><a href="http://qbsed.fun" target="_blank">备用-通道②</a></h2></li>
+                        <li><h2 class="link-box"><a href="https://byapi.rth1.xyz/1" target="_blank">浏览器-通道①</a></h2></li>
+                        <li><h2 class="link-box"><a href="https://byapi.rth1.xyz/2" target="_blank">浏览器-通道②</a></h2></li>
+                        
+
+                    </ul>
+                </div>
+            </div>
+            <p class="footer">请依次尝试，如果都打不开，建议更换浏览器或进行蜂窝网络 wifi的切换</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
