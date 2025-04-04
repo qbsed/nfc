@@ -118,15 +118,15 @@ function processText() {
   let urls = text.match(urlRegex);
   
   if (urls && urls.length > 0) {
-    let apiUrl = 'https://res.abeim.cn/api-dwz_longurl?url=' + encodeURIComponent(urls[0]);
+    let apiUrl = 'https://api.pearktrue.cn/api/short/hy.php?url=' + encodeURIComponent(urls[0]);
     
     fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
-        if (data.code === 200 && data.long_url) {
+        if (data.code === 200 && data.data.destination) {
           try {
             
-            let match = data.long_url.match(/[?&]songmid=([0-9a-zA-Z]+)/);
+            let match = data.data.destination.match(/[?&]songmid=([0-9a-zA-Z]+)/);
             if (match) {
               let songmid = match[1];
               generateFinalUrl(songmid);
