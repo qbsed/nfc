@@ -123,14 +123,14 @@
 
     // 从API获取songmid参数
 function getSongmidFromAPI(url) {
-  let apiUrl = 'https://res.abeim.cn/api-dwz_longurl?url=' + encodeURIComponent(url);
+  let apiUrl = 'https://api.pearktrue.cn/api/short/hy.php?url=' + encodeURIComponent(url);
 
   fetch(apiUrl)
     .then(response => response.json())
     .then(data => {
       if (data.code === 200) {
         
-        let match = data.long_url.match(/[?&]songmid=([0-9a-zA-Z]+)/);
+        let match = data.data.destination.match(/[?&]songmid=([0-9a-zA-Z]+)/);
         if (match) {
           let songmid = match[1];
           generateFinalUrl(songmid);
